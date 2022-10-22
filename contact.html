@@ -25,6 +25,18 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- <script src="https://smtpjs.com/v3/smtp.js"></script> -->
+	  <script src="index.js" type="text/javascript"></script> 
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+         emailjs.init("6b5JJEUWD616pU34O");
+      })();
+    </script>
+
   </head>
   <body>
     
@@ -119,24 +131,28 @@
 		        </div>
           </div>
           <div class="col-md-8 block-9 mb-md-5">
-            <form action="#" class="bg-light p-5 contact-form">
+            <form class="bg-light p-5 contact-form">
               <div class="form-group">
-                <input type="text" name="Name" class="form-control" placeholder="Your Name *" required>
+                <input type="text" id="fullName" class="form-control" placeholder="Your Name *" required>
               </div>
               <div class="form-group">
-                <input type="email" name="Email" class="form-control" placeholder="Your Email *" required>
+                <input type="email" id="email_id" class="form-control" placeholder="Your Email *" required>
               </div>
               <div class="form-group">
-                <input type="number" name="PhoneNumber" class="form-control" placeholder="Your Phone Number *" required>
+                <input type="number" id="phone_Number" class="form-control" placeholder="Your Phone Number *" required>
               </div>
               <div class="form-group">
-                <input type="text" name="Subject" class="form-control" placeholder="Subject *" required>
+                <input type="text" id="subject" class="form-control" placeholder="Subject *" required>
               </div>
               <div class="form-group">
-                <textarea name="Message" id="" cols="30" rows="7" class="form-control" placeholder="Message *"></textarea>
+                <textarea id="message" cols="30" rows="7" class="form-control" placeholder="Your Message *" required></textarea>
               </div>
               <div class="form-group">
-                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                <!-- <a onclick="runForrestRun()" id="submit"> -->
+                  <button onclick="SendMail()" type="button" class="btn btn-primary py-3 px-5">Submit
+                  </button>
+                  
+                <!-- </a> -->
               </div>
             </form>
           
@@ -195,7 +211,7 @@
                 <ul>
                   <li><span class="icon icon-map-marker"></span><span class="text">392 C, Shipra Suncity, Indirapuram, Ghaziabad - 201014, Uttarpradesh</span></li>
                   <li><a href="#"><span class="icon icon-phone"></span><span class="text">+91 98738 89299, +91 9899793699</span></a></li>
-                  <li><a href="#"><span class="icon icon-envelope"></span><span
+                  <li><a href="https://mail.google.com/mail/?view=cm&fs=1&to=communication@bongotoru.in"><span class="icon icon-envelope"></span><span
                         class="text">communication@bongotoru.in</span></a></li>
                 </ul>
               </div>
@@ -260,6 +276,7 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <!-- <script src="js/index.js"></script> -->
     
   </body>
 </html>

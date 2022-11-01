@@ -1,3 +1,57 @@
+<?php 
+
+$errors = [];
+$errorMessage = '';
+$successMessage = '';
+
+if (!empty($_POST)) {
+  $name = $_POST['fullName'];
+  $email = $_POST['email_id'];
+  $ph_number = $_POST['phone_Number'];
+  $subject = $_POST['subject'];
+  $message = $_POST['message'];
+  $email_from='communication@bongotoru.in';
+
+  if (empty($name)) {
+    $errors[] = 'Name is empty';
+  }
+  if (empty($email)) {
+    $errors[] = 'Email is empty';
+  }
+  else if (empty($ph_number)) {
+    $errors[] = 'Phone number is empty';
+  }
+  else if (empty($subject)) {
+    $errors[] = 'Subject is empty';
+  }
+  else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors[] = 'Email is invalid';
+  }
+  else if (empty($message)) {
+    $errors[] = 'Message is empty';
+  }
+
+  else if (!empty($errors)) {
+    $allErrors = join('<br/>', $errors);
+    $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+  } else {
+    $toEmail = 'yt7500288059@gmail.com';
+   // $emailSubject = 'New email received from Bongotoru.in';
+    $headers = ['From' => $email_from, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=iso-8859-1'];
+    $bodyParagraphs = ["Name: {$name}", "Email: {$email}", "Phone Number: {$ph_number}", "Message:, {$message}"];
+    $body = join(PHP_EOL, $bodyParagraphs);
+    if (mail($toEmail, $subject, $body, $headers)) {
+      $successMessage = "<p style='color: green;'>Thank you for contacting us :)</p>";
+    }
+    else {
+      $errorMessage = "<p style='color: red;'>Oops, something went wrong. Please try again later</p>";
+    }
+  }
+} 
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +80,7 @@
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
 
-  
+           <!-- /*********Email js code********/ -->
 	   <!-- <script src="index.js" type="text/javascript"></script>  -->
    <!--- <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
@@ -74,7 +128,7 @@
             <!-- <li class="nav-item"><a href="javascript:;" class="nav-link">Sponsors</a></li>
             <li class="nav-item"><a href="javascript:;" class="nav-link">Gallery</a></li> -->
             <!-- <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
-            <li class="nav-item active"><a href="contact.html" class="nav-link">Contact Us</a></li>
+            <li class="nav-item active"><a href="contact.php" class="nav-link">Contact Us</a></li>
           </ul>
         </div>
       </div>
@@ -131,7 +185,7 @@
 		        </div>
           </div>
           <div class="col-md-8 block-9 mb-md-5">
-            <form class="bg-light p-5 contact-form">
+            <form class="bg-light p-5 contact-form" method="POST">
               <div class="form-group">
                 <input type="text" id="fullName" class="form-control" placeholder="Your Name *" required>
               </div>
@@ -149,14 +203,19 @@
               </div>
               <div class="form-group">
                 <!-- <a onclick="runForrestRun()" id="submit"> -->
-                  <!-- <button onclick="SendMail()" type="button" class="btn btn-primary py-3 px-5">Submit
-                  </button> -->
-                  <button type="button" class="btn btn-primary py-3 px-5">Submit
+                  <button id = "submit" type="button" class="btn btn-primary py-3 px-5">Submit
                   </button>
-                  
                 <!-- </a> -->
               </div>
+              <div class="form-group">
+              <?php echo((!empty($errorMessage)) ? $errorMessage : '') ?>
+              <?php echo((!empty($successMessage)) ? $successMessage : '') ?>
+
+              </div>
+              
             </form>
+
+            
           
           </div>
         </div>

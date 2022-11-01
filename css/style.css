@@ -9152,7 +9152,7 @@ textarea.form-control {
   background: #3c312e; }
 
 .ftco-footer {
-  font-size: 16px;
+  font-size: 15px;
   background: #000;
   padding: 7em 0; }
   .ftco-footer .logo {
@@ -9469,7 +9469,7 @@ textarea.form-control {
     color: #1089ff; }
   .ftco-counter .text span {
     display: block;
-    font-size: 18px;
+    font-size: 15px;
     color: rgba(0, 0, 0, 0.7);
     margin-bottom: 10px;
     line-height: 1.2;
@@ -10161,6 +10161,9 @@ p{margin:0}
 }
 
 /****my css***/
+.blog_left_sidebar{
+  padding-top: 15px;
+}
 .blog_item {
   margin-bottom: 50px; }
 
@@ -10267,4 +10270,8 @@ p{margin:0}
   height: 538px;
     display: flex;
     align-items: center;
+}
+
+.d-block{
+  font-size: 15px;
 }
